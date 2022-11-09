@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:android_library/secondpage.dart';
 /*
   Green : #12a644
   Grey  : #403f3d
@@ -159,15 +160,17 @@ class _MyAppState extends State<MyApp> {
                       borderRadius: BorderRadius.circular(150.80),
                       child: FloatingActionButton(
                         onPressed: (){
-                          setState(() {
-                            //18.5 - 25 Healthy 25-30 Overweight >30 Obesity
+                          Navigator.push(context,
+                          MaterialPageRoute(builder:(context)=>
+                           secondpage(bmi:_bmi)));
+                           //18.5 - 25 Healthy 25-30 Overweight >30 Obesity
                             _bmi=(_weight/((_height/100)*(_height/100))).round().toInt();
                             if(_bmi>=18.5 && _bmi<=25) {_condition=" Normal";}
                             else if(_bmi>25 && _bmi<=30) {_condition=" Overweight";}
                             else if(_bmi>30) {_condition=" Obesity";}
                             else  {_condition=" Underweight";}
-                          });
-                        },
+                          }
+                        ,
                         child: Text("Calculate",style: TextStyle(color: Colors.black,fontSize: 10.0, fontWeight: FontWeight.bold),),
                       ),
                     ),
